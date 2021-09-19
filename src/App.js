@@ -4,11 +4,12 @@ import Timer from './Timer';
 
 const App = () => {
   const [started, setStarted] = useState(false);
+  const [set, Reset] = useState(false);
 
   return (
     <div>
-      <RecordButton setting={setStarted} />
-      <Timer start={started} />
+      <RecordButton setting={setStarted} reset={Reset} set={set} />
+      <Timer start={started} reset={set} />
     </div>
   )
 }

@@ -54,13 +54,14 @@ const RecordButton = (props) => {
             .join('')
         const first = transcript.split(' ')[0]
         const second = transcript.split(' ')[1]
-
-        console.log(transcript)
         if(first == 'start') {
             props.setting(true);
         }
         if(second == 'pause') {
             props.setting(false);
+        }
+        if(props.set) {
+            transcript = '';
         }
         mic.onerror = event => {
             console.log(event.error)
@@ -71,6 +72,7 @@ const RecordButton = (props) => {
     return(
         <div style={{ position: 'absolute', right: '50%' }}>
             <Button style={{ display: 'flex', alignSelf: 'center' }} variant="contained" color={buttonColour} onClick={() => {setIsMicOn(!isMicOn)}} >{buttonLabel}</Button>
+            <Button style={{ display: 'flex', alignSelf: 'center' }} variant="contained" color={buttonColour} onClick={() => {window.location.reload()}}>Reset</Button>
         </div>
     )
 }
